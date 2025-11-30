@@ -62,6 +62,18 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
         
         /* Header & Navigation */
         header {
@@ -143,8 +155,11 @@
             height: 90px;
         }
         
-        .adsense-banner.rectangle {
-            height: 250px;
+        .adsense-banner.sidebar {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .adsense-banner.mobile {
@@ -178,8 +193,8 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2rem;
-            max-width: 800px;
             margin: 0 auto;
+            grid-column: 2;
         }
         
         .tool-title {
@@ -340,6 +355,7 @@
         /* Content Sections */
         .content-section {
             padding: 3rem 0;
+            grid-column: 1 / -1;
         }
         
         .section-title {
@@ -416,6 +432,7 @@
             background-color: var(--secondary);
             color: white;
             padding: 3rem 0 1rem;
+            grid-column: 1 / -1;
         }
         
         .footer-content {
@@ -455,6 +472,21 @@
         }
         
         /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .tool-container {
+                grid-column: 1;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -567,13 +599,17 @@
         
         /* Print Styles */
         @media print {
-            header, footer, .calculate-btn, .adsense-banner {
+            header, footer, .calculate-btn, .adsense-banner, .sidebar {
                 display: none;
             }
             
             .tool-container, .result-container {
                 box-shadow: none;
                 border: 1px solid #ddd;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -612,12 +648,20 @@
                 </div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
                 <nav class="desktop-nav">
-                  
                     <ul>
-                        <li><a href="tool.html">Calculator</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#tool">Calculator</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                    </ul>
+                </nav>
+                <nav class="mobile-nav" id="mobileNav">
+                    <ul>
+                        <li><a href="#tool">Calculator</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><a href="privacy.html">Privacy</a></li>
                     </ul>
                 </nav>
@@ -625,87 +669,106 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Age Gap Calculator - Calculate Exact Age Difference in Years, Months & Days</h1>
-            <p>Our free online age gap calculator helps you find the exact age difference between two birthdays in years, months, and days. Perfect for relationships, siblings, genealogy, and more. Fast, private, and mobile-friendly tool.</p>
-            
-            <div class="tool-container" id="tool">
-                <h2 class="tool-title">Age Difference Calculator</h2>
-                <div class="input-group">
-                    <div class="input-field">
-                        <label for="person1">First Person's Birth Date</label>
-                        <input type="date" id="person1">
-                    </div>
-                    <div class="input-field">
-                        <label for="person2">Second Person's Birth Date</label>
-                        <input type="date" id="person2">
-                    </div>
-                </div>
-                <button class="calculate-btn" id="calculate">Calculate Age Gap</button>
-                
-                <div class="result-container" id="result">
-                    <h3 class="result-title">Exact Age Gap Breakdown</h3>
-                    <div class="result-details">
-                        <div class="result-item">
-                            <div class="value" id="years-difference">0 years</div>
-                            <div class="label">Years Difference</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="value" id="months-difference">0 months</div>
-                            <div class="label">Months Difference</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="value" id="days-difference">0 days</div>
-                            <div class="label">Days Difference</div>
-                        </div>
-                    </div>
-                    
-                    <div class="result-details">
-                        <div class="result-item">
-                            <div class="value" id="total-days">0 days</div>
-                            <div class="label">Total Days Difference</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="value" id="percentage-difference">0%</div>
-                            <div class="label">Percentage Difference</div>
-                        </div>
-                        <div class="result-item">
-                            <div class="value" id="compatibility-score">0/10</div>
-                            <div class="label">Compatibility Score</div>
-                        </div>
-                    </div>
-                    
-                    <div class="compatibility-meter">
-                        <div class="meter-label">
-                            <span>Low Compatibility</span>
-                            <span>High Compatibility</span>
-                        </div>
-                        <div class="meter-bar">
-                            <div class="meter-fill" id="meter-fill"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="interpretation">
-                        <h3>Age Gap Interpretation</h3>
-                        <p id="interpretation-text">Enter both birth dates to see the interpretation of your age gap.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Google AdSense Middle Rectangle -->
     <div class="container">
-        <div class="adsense-banner rectangle">
-            <!-- AdSense Medium Rectangle -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px"
-                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                 data-ad-slot="1122334455"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+        <div class="main-content">
+            <!-- Left Sidebar Ad -->
+            <aside class="sidebar left-sidebar">
+                <div class="adsense-banner sidebar">
+                    <!-- AdSense Sidebar Banner -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="1122334455"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <section class="hero">
+                    <h1>Age Gap Calculator - Calculate Exact Age Difference in Years, Months & Days</h1>
+                    <p>Our free online age gap calculator helps you find the exact age difference between two birthdays in years, months, and days. Perfect for relationships, siblings, genealogy, and more. Fast, private, and mobile-friendly tool.</p>
+                    
+                    <div class="tool-container" id="tool">
+                        <h2 class="tool-title">Age Difference Calculator</h2>
+                        <div class="input-group">
+                            <div class="input-field">
+                                <label for="person1">First Person's Birth Date</label>
+                                <input type="date" id="person1">
+                            </div>
+                            <div class="input-field">
+                                <label for="person2">Second Person's Birth Date</label>
+                                <input type="date" id="person2">
+                            </div>
+                        </div>
+                        <button class="calculate-btn" id="calculate">Calculate Age Gap</button>
+                        
+                        <div class="result-container" id="result">
+                            <h3 class="result-title">Exact Age Gap Breakdown</h3>
+                            <div class="result-details">
+                                <div class="result-item">
+                                    <div class="value" id="years-difference">0 years</div>
+                                    <div class="label">Years Difference</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="value" id="months-difference">0 months</div>
+                                    <div class="label">Months Difference</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="value" id="days-difference">0 days</div>
+                                    <div class="label">Days Difference</div>
+                                </div>
+                            </div>
+                            
+                            <div class="result-details">
+                                <div class="result-item">
+                                    <div class="value" id="total-days">0 days</div>
+                                    <div class="label">Total Days Difference</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="value" id="percentage-difference">0%</div>
+                                    <div class="label">Percentage Difference</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="value" id="compatibility-score">0/10</div>
+                                    <div class="label">Compatibility Score</div>
+                                </div>
+                            </div>
+                            
+                            <div class="compatibility-meter">
+                                <div class="meter-label">
+                                    <span>Low Compatibility</span>
+                                    <span>High Compatibility</span>
+                                </div>
+                                <div class="meter-bar">
+                                    <div class="meter-fill" id="meter-fill"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="interpretation">
+                                <h3>Age Gap Interpretation</h3>
+                                <p id="interpretation-text">Enter both birth dates to see the interpretation of your age gap.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Right Sidebar Ad -->
+            <aside class="sidebar right-sidebar">
+                <div class="adsense-banner sidebar">
+                    <!-- AdSense Sidebar Banner -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="5566778899"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
         </div>
     </div>
 
