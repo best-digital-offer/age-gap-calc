@@ -97,31 +97,81 @@
         <priority>0.7</priority>
     </url>
     
-    <!-- Blog/Article Pages (Future Content) -->
+    <!-- Blog Section -->
     <url>
         <loc>https://agegapchecker.online/blog/</loc>
-        <lastmod>2023-10-15</lastmod>
+        <lastmod>2023-12-15</lastmod>
         <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Blog Articles -->
+    <url>
+        <loc>https://agegapchecker.online/blog/understanding-age-gap-relationships.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/how-to-calculate-age-difference.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/age-gap-psychology-science.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/celebrity-age-gap-relationships.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     
     <url>
-        <loc>https://agegapchecker.online/blog/what-is-age-gap.html</loc>
-        <lastmod>2023-10-15</lastmod>
+        <loc>https://agegapchecker.online/blog/age-gap-dating-tips.html</loc>
+        <lastmod>2023-12-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://agegapchecker.online/blog/age-gap-relationships.html</loc>
-        <lastmod>2023-10-15</lastmod>
+        <loc>https://agegapchecker.online/blog/cultural-perspectives-age-gaps.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/age-gap-challenges-solutions.html</loc>
+        <lastmod>2023-12-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <url>
-        <loc>https://agegapchecker.online/blog/calculate-age-difference.html</loc>
-        <lastmod>2023-10-15</lastmod>
+        <loc>https://agegapchecker.online/blog/legal-aspects-age-gap-relationships.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/age-gap-success-stories.html</loc>
+        <lastmod>2023-12-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://agegapchecker.online/blog/age-gap-calculator-guide.html</loc>
+        <lastmod>2023-12-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
